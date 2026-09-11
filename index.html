@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="SQLStructEval evaluates structural concentration, diversity and robustness of LLM-generated SQL alongside execution accuracy. Accepted at AACL 2026.">
+  <meta name="keywords" content="Text-to-SQL, structural evaluation, language models, AACL 2026">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SQLStructEval · AACL 2026</title>
+  <meta name="theme-color" content="#155aa8">
+  <link rel="canonical" href="https://xanderzhou2022.github.io/AACL2026-SQLSTRUCTEVAL/">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script defer src="./static/js/index.js"></script>
+</head>
+<body id="top">
+<a class="skip-link" href="#abstract">Skip to content</a>
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item brand-mark" href="#top">
+      <span class="icon"><i class="fas fa-layer-group"></i></span>
+      <span>SQLStructEval</span>
+    </a>
+    <button type="button" class="navbar-burger" aria-label="Toggle navigation" aria-controls="main-navbar" aria-expanded="false" data-target="main-navbar">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+  </div>
+  <div id="main-navbar" class="navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item" href="#abstract">Abstract</a>
+      <a class="navbar-item" href="#method">Method</a>
+      <a class="navbar-item" href="#pipeline">Pipeline</a>
+      <a class="navbar-item" href="#results">Results</a>
+      <a class="navbar-item" href="#BibTeX">BibTeX</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero publication-header">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <p class="publication-kicker">AACL 2026 · Accepted Paper</p>
+          <h1 class="title is-1 publication-title">
+            <span class="project-wordmark">SQLStructEval</span><br>Structural Evaluation of<br class="desktop-break"> LLM Text-to-SQL Generation
+          </h1>
+          <div class="is-size-5 publication-authors">
+<span class="author-block">Yixi Zhou<sup>1,2,*</sup>,</span>
+<span class="author-block">Fan Zhang<sup>3,*</sup>,</span>
+<span class="author-block">Zhiqiao Guo<sup>4,*</sup>,</span>
+<span class="author-block">Yu Chen<sup>3,†</sup>,</span><br>
+<span class="author-block">Haipeng Zhang<sup>2,†</sup>,</span>
+<span class="author-block">Preslav Nakov<sup>5</sup>,</span>
+<span class="author-block">Zhuohan Xie<sup>5</sup></span>
+</div>
+<div class="publication-affiliations">
+<span class="affiliation-block"><sup>1</sup> Hong Kong Baptist University</span>
+<span class="affiliation-block"><sup>2</sup> ShanghaiTech University</span><br>
+<span class="affiliation-block"><sup>3</sup> The University of Tokyo</span>
+<span class="affiliation-block"><sup>4</sup> University of Michigan</span>
+<span class="affiliation-block"><sup>5</sup> MBZUAI</span>
+</div>
+<div class="publication-notes">
+            <span><sup>*</sup> Equal contribution</span>
+            <span><sup>&dagger;</sup> Corresponding authors</span>
+          </div>
+          <div class="publication-email">
+            <a href="mailto:yxzhou@comp.hkbu.edu.hk">yxzhou@comp.hkbu.edu.hk</a>
+          </div>
+          <div class="is-size-5 publication-venue">
+            Asia-Pacific Chapter of the Association for Computational Linguistics
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <span class="link-block">
+                <a href="./assets/sqlstructeval-paper.pdf" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://github.com/XanderZhou2022/AACL2026-SQLSTRUCTEVAL" class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fab fa-github"></i></span>
+                  <span>Code</span>
+                </a>
+              </span>
+            </div>
+          </div>
+
+          <p class="hero-summary">
+            Correct answers can come from different programs.<br>We study how SQL structure varies across generations and equivalent inputs.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <figure class="figure-panel">
+        <img src="./assets/framework.png" width="1800" height="957" alt="Paper overview comparing direct SQL generation with an explicit AST-based program representation.">
+      </figure>
+      <h2 class="subtitle has-text-centered">
+        A structural view of Text-to-SQL: compare canonical programs, then evaluate a compile-style generation pipeline.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="abstract">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Large language models (LLMs) can generate SQL queries that return correct answers while differing in program structure. We introduce SQLStructEval, a framework that analyzes this behavior through canonical abstract syntax tree (AST) representations. Experiments on Spider across seven models reveal structural variation within execution-correct generations and sensitivity to question paraphrases and schema presentation. Additional 100-example subsets of BIRD Mini-Dev, Spider-Syn, and Dr.Spider provide scope validation.
+          </p>
+          <p>
+            As a mitigation case study, a pipeline that generates structured intermediate representations before deterministic compilation improves execution accuracy and structural agreement among correct outputs in the evaluated setting.
+          </p>
+          <p>
+            Structural diversity is not inherently erroneous: our measures expose differences for further inspection rather than determine semantic correctness. These findings establish structural analysis as a complementary diagnostic alongside execution-based evaluation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section method-section" id="method">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3 has-text-centered">Method</h2>
+        <p class="section-intro">Sample SQL for a fixed intent. Canonicalize its representation. Inspect how structure and execution relate.</p>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon"><i class="fas fa-cube"></i></div>
+            <h3 class="title is-5">Canonical representation</h3>
+            <p>Parse SQL into ASTs and normalize superficial differences, including alias choices and conjunction order. Compare the resulting canonical representations.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon accent-amber"><i class="fas fa-bullseye"></i></div>
+            <h3 class="title is-5">Execution and structure</h3>
+            <p>Measure majority concentration, distinct structures and entropy, both across all outputs and within the execution-correct subset.</p>
+          </article>
+          <article class="feature-card">
+            <div class="feature-icon accent-rose"><i class="fas fa-chart-line"></i></div>
+            <h3 class="title is-5">Input sensitivity</h3>
+            <p>Compare dominant structures across question paraphrases and reordered schema presentations that preserve the intended query.</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pipeline">
+  <div class="container is-max-desktop">
+    <h2 class="title is-3 has-text-centered">Compile-style generation</h2>
+    <div class="timeline">
+      <div class="timeline-step">
+        <span class="step-index">I</span>
+        <div>
+          <h3 class="title is-5">Question and database schema</h3>
+          <p>Provide the natural language question, available tables and columns, and foreign-key relationships.</p>
+        </div>
+      </div>
+      <div class="timeline-step">
+        <span class="step-index">II</span>
+        <div>
+          <h3 class="title is-5">Structured query plan</h3>
+          <p>Generate a JSON representation with explicit selection, joins, predicates, aggregation, ordering and limits.</p>
+        </div>
+      </div>
+      <div class="timeline-step">
+        <span class="step-index">III</span>
+        <div>
+          <h3 class="title is-5">Deterministic compilation and evaluation</h3>
+          <p>Compile the plan into SQL, then apply the same execution checks and canonical structural analysis used for direct generation.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section results-section" id="results">
+<div class="container is-max-desktop">
+<h2 class="title is-3 has-text-centered">Results</h2>
+<p class="section-intro">Spider development set · 1,034 questions · 10 generations per question</p>
+<div class="headline-results">
+<div><strong>+4.3<span> pp</span></strong><p>Execution accuracy<br>Compile-style vs. Direct SQL</p></div>
+<div><strong>0.632</strong><p>Correct-subset AST agreement<br>Up from 0.552 with Direct SQL</p></div>
+<div><strong>7</strong><p>Models evaluated<br>Across four core experiments</p></div>
+</div>
+<div class="table-container" tabindex="0" role="region" aria-label="Pipeline comparison table, scroll horizontally on small screens">
+<table class="table is-fullwidth result-table">
+<caption>GPT-5-mini: full-pipeline comparison reported in the paper</caption>
+<thead><tr><th scope="col">Measure</th><th scope="col">Direct SQL</th><th scope="col">DIN-SQL</th><th scope="col">Compile-style</th></tr></thead>
+<tbody>
+<tr><th scope="row">Execution accuracy</th><td>0.742</td><td>0.736</td><td class="best">0.785</td></tr>
+<tr><th scope="row">AST agreement (correct)</th><td>0.552</td><td>0.579</td><td class="best">0.632</td></tr>
+<tr><th scope="row">Distinct structures (all)</th><td>1.908</td><td>1.553</td><td>2.527</td></tr>
+</tbody></table></div>
+<p class="result-note">Agreement among correct outputs and diversity across all outputs describe different distributions. These results assess the complete pipeline; they do not isolate representation, compilation or prompting effects.</p>
+<div class="columns analysis-panels">
+<div class="column"><article class="result-card"><h3 class="title is-5">Sensitivity to equivalent inputs</h3><p>For GPT-5-mini, <strong>90.0%</strong> of evaluated questions change their majority structure under paraphrasing and <strong>64.0%</strong> under schema presentation changes. This experiment uses 200 Spider questions.</p></article></div>
+<div class="column"><article class="result-card"><h3 class="title is-5">Beyond the main benchmark</h3><p>Additional 100-question subsets of <strong>BIRD Mini-Dev</strong>, <strong>Spider-Syn</strong> and <strong>Dr.Spider</strong> extend the scope check. They are descriptive subset evaluations, not full-benchmark rankings.</p></article></div>
+</div>
+</div></section>
+<section class="section" id="example"><div class="container is-max-desktop">
+<h2 class="title is-3 has-text-centered">One answer, different structures</h2>
+<p class="section-intro">“Which model of the car has the minimum horsepower?”</p>
+<div class="ast-comparison">
+<figure class="figure-panel"><img src="./assets/ast-reference.png" width="1200" height="764" loading="lazy" alt="Reference AST: a join followed by ORDER BY horsepower and LIMIT 1."><figcaption>Annotated reference: ORDER BY + LIMIT</figcaption></figure>
+<figure class="figure-panel"><img src="./assets/ast-generated.png" width="1200" height="714" loading="lazy" alt="Generated AST: a join with a WHERE predicate and a MIN horsepower subquery."><figcaption>Generated query: MIN subquery</figcaption></figure>
+</div>
+<p class="result-note">Both formulations return the same result in the paper’s example. Agreement on one database does not establish equivalence on every database, for example when ties or null values change.</p>
+</div></section>
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <div class="section-heading-row">
+      <h2 class="title">BibTeX</h2>
+      <button class="button is-small is-rounded is-dark copy-bibtex-button" type="button" data-copy-target="bibtex-code">
+        <span class="icon"><i class="far fa-copy"></i></span>
+        <span>Copy</span>
+      </button>
+    </div>
+    <p class="citation-note">Accepted at AACL 2026. Citation metadata will be updated when the proceedings entry is available.</p>
+    <pre><code id="bibtex-code">@inproceedings{zhou2026sqlstructeval,
+  title = {{SQLStructEval}: Structural Evaluation of LLM Text-to-SQL Generation},
+  author = {Zhou, Yixi and Zhang, Fan and Guo, Zhiqiao and Chen, Yu and
+            Zhang, Haipeng and Nakov, Preslav and Xie, Zhuohan},
+  booktitle = {AACL},
+  year = {2026},
+  note = {Accepted; proceedings metadata forthcoming},
+  url = {https://xanderzhou2022.github.io/AACL2026-SQLSTRUCTEVAL/}
+}</code></pre>
+  </div>
+</section>
+
+<button id="scroll-top-button" class="scroll-top-button" type="button" aria-label="Back to top">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="./assets/sqlstructeval-paper.pdf" aria-label="Paper PDF">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/XanderZhou2022/AACL2026-SQLSTRUCTEVAL" aria-label="Code">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content has-text-centered">
+          <p>
+            Adapted from the authors’ academic project template and the <a href="https://nerfies.github.io/">Nerfies project page</a>. Built with <a href="https://bulma.io/">Bulma</a> and <a href="https://fontawesome.com/">Font Awesome</a>. Template adaptations follow <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>
