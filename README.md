@@ -129,6 +129,7 @@ The paper is accepted at AACL 2026. Bibliographic metadata below is provisional 
             Zhang, Haipeng and Nakov, Preslav and Xie, Zhuohan},
   booktitle = {AACL},
   year = {2026},
+  address = {Hengqin, China},
   note = {Accepted; proceedings metadata forthcoming},
   url = {https://arxiv.org/abs/2604.06736}
 }
