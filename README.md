@@ -16,7 +16,7 @@ SQLStructEval examines how consistently language models construct SQL across rep
 
 ## Overview
 
-![SQLStructEval overview](https://xanderzhou2022.github.io/AACL2026-SQLSTRUCTEVAL/assets/framework.png)
+![SQLStructEval overview](assets/framework.png)
 
 - **Repeated generation:** compare canonical structures for the same question and schema.
 - **Execution and structure:** inspect both all outputs and the execution-correct subset.
