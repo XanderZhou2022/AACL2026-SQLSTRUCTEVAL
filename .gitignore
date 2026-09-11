@@ -1,0 +1,46 @@
+# Byte-compiled / cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Editor / IDE settings
+.vscode/
+.idea/
+.DS_Store
+
+# Python tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local data and results (do not commit)
+spider_data/
+data/
+outputs/
+results/
+logs/
+*.jsonl
+*.sqlite
+*.db
+*.log
+
+# Credentials / env
+.env
+.env.*
+
+
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials*.json
+secrets*.json
+*.zip
+*.tar.gz
+.sites-runtime/

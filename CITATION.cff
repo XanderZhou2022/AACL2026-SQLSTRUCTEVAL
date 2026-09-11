@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use SQLStructEval, please cite the AACL 2026 paper. Proceedings metadata is provisional."
+type: software
+title: "SQLStructEval: Structural Evaluation of LLM Text-to-SQL Generation"
+authors:
+  - family-names: Zhou
+    given-names: Yixi
+  - family-names: Zhang
+    given-names: Fan
+  - family-names: Guo
+    given-names: Zhiqiao
+  - family-names: Chen
+    given-names: Yu
+  - family-names: Zhang
+    given-names: Haipeng
+  - family-names: Nakov
+    given-names: Preslav
+  - family-names: Xie
+    given-names: Zhuohan
+repository-code: "https://github.com/XanderZhou2022/AACL2026-SQLSTRUCTEVAL"
+url: "https://xanderzhou2022.github.io/AACL2026-SQLSTRUCTEVAL/"
+license: MIT
