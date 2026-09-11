@@ -130,7 +130,7 @@ The paper is accepted at AACL 2026. Bibliographic metadata below is provisional 
   booktitle = {AACL},
   year = {2026},
   note = {Accepted; proceedings metadata forthcoming},
-  url = {https://xanderzhou2022.github.io/AACL2026-SQLSTRUCTEVAL/}
+  url = {https://arxiv.org/abs/2604.06736}
 }
 ```
 
