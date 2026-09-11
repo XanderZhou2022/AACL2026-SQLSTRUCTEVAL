@@ -411,7 +411,16 @@ a { color: var(--accent); } a:hover { color: #103e73; }
 .ast-comparison figure { display: flex; flex-direction: column; justify-content: space-between; }
 figcaption { text-align: center; font-size: 1rem; color: #475569; margin-top: 1rem; }
 .citation-note { color: #475569; }
-#bibtex-code { line-height: 1.7; }
+#BibTeX pre { padding: 1rem; }
+#bibtex-code {
+  line-height: 1.7;
+  white-space: pre-wrap;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+@media (max-width: 768px) {
+  #BibTeX pre { font-size: 0.875rem; }
+}
 .skip-link { position: absolute; left: 1rem; top: -4rem; background: white; padding: .5rem 1rem; z-index: 100; }
 .skip-link:focus { top: .5rem; }
 :focus-visible { outline: 3px solid #297dcc; outline-offset: 3px; }
