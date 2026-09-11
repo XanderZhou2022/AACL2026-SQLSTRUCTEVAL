@@ -1,22 +1,36 @@
-# SQLStructEval
+<div align="center">
 
-### Structural Evaluation of LLM Text-to-SQL Generation
+<h1>SQLStructEval</h1>
 
-**Accepted at AACL 2026**
+<h3>Structural Evaluation of LLM Text-to-SQL Generation</h3>
 
-Yixi Zhou*, Fan Zhang*, Zhiqiao Guo*, Yu Chen†, Haipeng Zhang†, Preslav Nakov, Zhuohan Xie
+<p>
+  Yixi Zhou<sup>*</sup>, Fan Zhang<sup>*</sup>, Zhiqiao Guo<sup>*</sup>,
+  Yu Chen<sup>†</sup>, Haipeng Zhang<sup>†</sup>, Preslav Nakov, and Zhuohan Xie
+</p>
 
-*Equal contribution · †Corresponding authors
+<p><sup>*</sup> Equal contribution &nbsp; · &nbsp; <sup>†</sup> Corresponding authors</p>
 
-[Project page](https://xanderzhou2022.github.io/AACL2026-SQLSTRUCTEVAL/) · [Paper PDF](https://xanderzhou2022.github.io/AACL2026-SQLSTRUCTEVAL/assets/sqlstructeval-paper.pdf) · [Experiment guide](docs/EXPERIMENTS.md) · [Release notes](docs/RELEASE_NOTES.md)
+<p>
+  <img src="assets/badges/aacl2026.svg" alt="Accepted at AACL 2026">
+  <a href="https://arxiv.org/abs/2604.06736"><img src="assets/badges/arxiv.svg" alt="arXiv: 2604.06736"></a>
+  <a href="https://xanderzhou2022.github.io/AACL2026-SQLSTRUCTEVAL/assets/sqlstructeval-paper.pdf"><img src="assets/badges/paper.svg" alt="Read the paper PDF"></a>
+  <a href="https://xanderzhou2022.github.io/AACL2026-SQLSTRUCTEVAL/"><img src="assets/badges/project.svg" alt="Project page"></a>
+</p>
+
+<p><strong>SQLStructEval evaluates how consistently language models construct SQL across repeated generations and equivalent inputs, alongside execution accuracy.</strong></p>
+
+<p>
+  <img src="assets/framework.png" alt="SQLStructEval overview: direct SQL generation and explicit structural representations" width="760">
+</p>
+
+</div>
+
+## Overview
 
 SQLStructEval examines how consistently language models construct SQL across repeated generations and equivalent presentations of the input. It canonicalizes SQL with `sqlglot`, then measures structural concentration, diversity, reference alignment, and sensitivity to question and schema perturbations alongside execution accuracy.
 
 **Different structures are not inherently errors.** These measures are diagnostic: they reveal variation for further semantic or downstream inspection. A query can agree with the reference on one database without being equivalent on every possible database.
-
-## Overview
-
-![SQLStructEval overview](assets/framework.png)
 
 - **Repeated generation:** compare canonical structures for the same question and schema.
 - **Execution and structure:** inspect both all outputs and the execution-correct subset.
@@ -40,18 +54,20 @@ The paper evaluates seven models on Spider and includes scope checks on 100-exam
 ## Repository layout
 
 ```text
-core/                 Canonicalization, metrics, JSON-to-SQL compiler, API adapter
-experiments/exp1/     Repeated direct SQL generation
-experiments/exp2/     Execution vs. structure analysis
-experiments/exp3/     Compile-style generation and error-analysis tools
-experiments/exp4/     Paraphrase / schema generation and robustness analysis
-scripts/             Spider input preparation and combined metrics runner
-examples/            Synthetic offline demo
-tests/              Release regression checks
-docs/               Experiment guide and release notes
+core/                  Canonicalization, metrics, JSON-to-SQL compiler, API adapter
+experiments/exp1/      Repeated direct SQL generation
+experiments/exp2/      Execution vs. structure analysis
+experiments/exp3/      Compile-style generation and error-analysis tools
+experiments/exp4/      Paraphrase / schema generation and robustness analysis
+scripts/               Spider input preparation and combined metrics runner
+examples/              Synthetic offline demo
+tests/                 Release regression checks
+docs/                  Experiment guide and release notes
 ```
 
 The **`main` branch** contains code and documentation. The independent **`gh-pages` branch** contains the project website, figures, and paper PDF. GitHub Pages should publish from **`gh-pages` / `(root)`**.
+
+[Experiment guide](docs/EXPERIMENTS.md) · [Release notes](docs/RELEASE_NOTES.md)
 
 ## Quick start: no API key needed
 
