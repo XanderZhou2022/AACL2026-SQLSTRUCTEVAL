@@ -141,8 +141,7 @@ The paper is accepted at AACL 2026. Bibliographic metadata below is provisional 
 ```bibtex
 @inproceedings{zhou2026sqlstructeval,
   title = {{SQLStructEval}: Structural Evaluation of LLM Text-to-SQL Generation},
-  author = {Zhou, Yixi and Zhang, Fan and Guo, Zhiqiao and Chen, Yu and
-            Zhang, Haipeng and Nakov, Preslav and Xie, Zhuohan},
+  author = {Zhou, Yixi and Zhang, Fan and Guo, Zhiqiao and Chen, Yu and Zhang, Haipeng and Nakov, Preslav and Xie, Zhuohan},
   booktitle = {AACL},
   year = {2026},
   address = {Hengqin, China},
